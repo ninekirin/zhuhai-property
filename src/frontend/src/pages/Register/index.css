@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+html {
+  height: 100%;
+  width: 100%;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0px;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
+    helvetica neue, Arial, noto sans, sans-serif, apple color emoji,
+    segoe ui emoji, segoe ui symbol, noto color emoji;
+  color: rgba(0, 0, 0, 0.85);
+  background-color: #f0f2f5;
+  height: 100vh;
+  width: 100%;
+  min-width: 328px;
+  min-height: 414px;
+  background-image: url(../../assets/images/Zhuhai.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* 标题 */
+.title-span {
+  line-height: 44px;
+  font-size: 33px;
+  font-weight: 600;
+  font-family: Avenir, helvetica neue, Arial, Helvetica, sans-serif;
+}
+
+/* 底部 */
+.footer {
+  padding: 0 16px;
+  height: 52px;
+  margin: 48px 0 24px 0;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.site-desc {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 600;
+}

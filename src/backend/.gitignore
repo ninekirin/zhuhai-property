@@ -1,0 +1,10 @@
+flask/
+*.pyc
+dev
+yarn.lock
+yarn-error.log
+*.psd
+env/
+env__/
+.vscode/symbols.json
+test/

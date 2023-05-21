@@ -1,0 +1,175 @@
+import React, { lazy } from 'react';
+import {
+  SecurityScanOutlined,
+  HomeOutlined,
+  SettingOutlined,
+  NotificationOutlined,
+  UserOutlined,
+  EditOutlined,
+  BarsOutlined,
+  TeamOutlined,
+  FundViewOutlined,
+  AreaChartOutlined,
+  EyeOutlined,
+  ProfileOutlined,
+  RocketOutlined,
+} from '@ant-design/icons';
+
+export const insideRoutes = [
+  {
+    path: 'home',
+    title: 'Home',
+    meta: { title: '', roles: [] },
+    icon: <RocketOutlined />,
+    component: lazy(() => import('@/pages/Home')),
+  },
+  {
+    path: 'property',
+    title: 'Property',
+    meta: { title: '', roles: [] },
+    icon: <HomeOutlined />,
+    children: [
+      {
+        path: '',
+        redirect: 'property-list',
+        hidden: true,
+      },
+      {
+        path: 'property-analysis',
+        title: 'Analysis',
+        meta: { title: '', roles: [] },
+        icon: <FundViewOutlined />,
+        component: lazy(() => import('@/pages/Property/Analysis')),
+      },
+      {
+        path: 'property-visualization',
+        title: 'Visualization',
+        meta: { title: '', roles: [] },
+        icon: <AreaChartOutlined />,
+        component: lazy(() => import('@/pages/Property/Visualization')),
+      },
+      {
+        path: 'property-list',
+        title: 'List',
+        meta: { title: '', roles: [] },
+        icon: <BarsOutlined />,
+        component: lazy(() => import('@/pages/Property/List')),
+      },
+      {
+        path: 'property-detail/:id',
+        title: 'Room Detail',
+        meta: { title: '', roles: [] },
+        icon: <EyeOutlined />,
+        component: lazy(() => import('@/pages/Property/Detail')),
+        hidden: false,
+      },
+    ],
+  },
+  {
+    path: 'profile',
+    title: 'Profile',
+    meta: { title: '', roles: [] },
+    icon: <UserOutlined />,
+    children: [
+      {
+        path: '',
+        redirect: 'user-information',
+        hidden: true,
+      },
+      {
+        path: 'user-information',
+        title: 'User Information',
+        meta: { title: '', roles: [] },
+        icon: <ProfileOutlined />,
+        component: lazy(() => import('@/pages/Profile/UserInformation')),
+      },
+      {
+        path: 'change-password',
+        title: 'Change Password',
+        meta: { title: '', roles: [] },
+        icon: <SecurityScanOutlined />,
+        component: lazy(() => import('@/pages/Profile/ChangePassword')),
+      },
+    ],
+  },
+  {
+    path: 'manage',
+    title: 'Management',
+    meta: { title: '', roles: [] },
+    icon: <SettingOutlined />,
+    // if the user is not admin, this route will be hidden
+    hidden: localStorage.getItem('account_type') !== 'admin',
+    children: [
+      {
+        path: '',
+        redirect: 'working-record-review',
+        hidden: true,
+      },
+      {
+        path: 'announcement',
+        title: 'Announcement',
+        meta: { title: '', roles: [] },
+        icon: <NotificationOutlined />,
+        children: [
+          {
+            path: '',
+            redirect: 'announcement-detail',
+            hidden: true,
+          },
+          {
+            path: 'create-announcement',
+            title: 'Create',
+            meta: { title: '', roles: [] },
+            icon: <EditOutlined />,
+            component: lazy(() => import('@/pages/Management/Announcement/CreateAnnouncement')),
+          },
+          {
+            path: 'edit-announcement/:id',
+            title: 'Edit',
+            meta: { title: '', roles: [] },
+            icon: <EditOutlined />,
+            component: lazy(() => import('@/pages/Management/Announcement/EditAnnouncement')),
+            hidden: true,
+          },
+          {
+            path: 'announcement-detail',
+            title: 'Detail',
+            meta: { title: '', roles: [] },
+            icon: <BarsOutlined />,
+            component: lazy(() => import('@/pages/Management/Announcement/AnnouncementDetail')),
+          },
+        ],
+      },
+      {
+        path: 'user',
+        title: 'User',
+        meta: { title: '', roles: [] },
+        icon: <UserOutlined />,
+        children: [
+          {
+            path: 'user-account',
+            title: 'Account',
+            meta: { title: '', roles: [] },
+            icon: <TeamOutlined />,
+            component: lazy(() => import('@/pages/Management/User/UserAccount')),
+          },
+          {
+            path: 'user-password/:user_id',
+            title: 'Password',
+            meta: { title: '', roles: [] },
+            icon: <SecurityScanOutlined />,
+            component: lazy(() => import('@/pages/Management/User/UserPassword')),
+            hidden: true,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '*',
+    title: '404',
+    meta: { title: '', roles: [] },
+    component: lazy(() => import('@/common/NotFound')),
+    hidden: true,
+  },
+];
